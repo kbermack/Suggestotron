@@ -2,7 +2,12 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   # GET /topics
-  # GET /topics.json
+  def upvote
+  @topic = Topic.find(params[:id])
+  @topic.votes.create
+  #redirect_to(topics_path)
+  end# GET /topics.json
+  
   def index
     @topics = Topic.all
   end
